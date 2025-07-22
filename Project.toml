@@ -1,0 +1,13 @@
+name = "NAVCal"
+uuid = "1b3985c3-bf2f-495c-9e41-74c6a13c969b"
+authors = ["Graham Harper Edwards"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.11"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

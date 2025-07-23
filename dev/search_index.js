@@ -1,0 +1,3 @@
+var documenterSearchIndex = {"docs":
+[{"location":"#NAVCal","page":"Home","title":"NAVCal","text":"","category":"section"},{"location":"","page":"Home","title":"Home","text":"Documentation for NAVCal.","category":"page"},{"location":"","page":"Home","title":"Home","text":"","category":"page"},{"location":"#NAVCal.annum-Tuple{Integer}","page":"Home","title":"NAVCal.annum","text":"annum(x)\n\nConvert NAVC varve year to age in annum. \n\n\n\n\n\n","category":"method"},{"location":"#NAVCal.varve_year-Tuple{Number}","page":"Home","title":"NAVCal.varve_year","text":"varve_year(x)\n\nConvert age in annum to NAVC varve year.\n\n\n\n\n\n","category":"method"}]
+}

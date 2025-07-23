@@ -1,9 +1,13 @@
 name = "NAVCal"
 uuid = "1b3985c3-bf2f-495c-9e41-74c6a13c969b"
 authors = ["Graham Harper Edwards"]
-version = "1.0.0-DEV"
+version = "0.0.1"
+
+[deps]
+DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
 
 [compat]
+DelimitedFiles = "1.9.1"
 julia = "1.11"
 
 [extras]

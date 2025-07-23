@@ -37,7 +37,7 @@ module NAVCal
 
     """
     function RiverRoad()
-        x = DelimitedFiles.readdlm("../navc-data/MASSRR/RRLevy98-AM.TXT")
+        x = DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/MASSRR/RRLevy98-AM.TXT"))
         (a= Int.(x[:,1]), z = float.(x[:,2]), notes=string.(x[:,3],x[:,3]))
     end
 
@@ -58,7 +58,7 @@ module NAVCal
 
     """
     function KelseyFerguson()
-        x = DelimitedFiles.readdlm("../navc-data/KF-ABCD09-AM.txt")
+        x = DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/KF-ABCD09-AM.txt"))
         (a= Int.(x[:,1]), z = float.(x[:,4]), summer = float.(x[:,2]), winter = float.(x[:,3]), transect=Int.(x[:,5]), notes=string.(x[:,6]))
     end
 
@@ -76,7 +76,7 @@ module NAVCal
 
     """
     function MillBrook()
-        x = DelimitedFiles.readdlm("../navc-data/MILLBK-AM.txt")
+        x = DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/MILLBK-AM.txt"))
         (a= Int.(x[:,1]), z = float.(x[:,2]))
     end
 
@@ -111,15 +111,15 @@ module NAVCal
     function WellsRiver(n::Int=0)
 
         x = if n==1
-            DelimitedFiles.readdlm("../navc-data/VTWellsR/WR1AswT.TXT", skipstart=2)
+            DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR1AswT.TXT"), skipstart=2)
         elseif n==2
-            DelimitedFiles.readdlm("../navc-data/VTWellsR/WR1BswT.TXT", skipstart=2)
+            DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR1BswT.TXT"), skipstart=2)
         elseif n==3
-            DelimitedFiles.readdlm("../navc-data/VTWellsR/WR1CswT.TXT", skipstart=2)
+            DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR1CswT.TXT"), skipstart=2)
         elseif n==4
-            DelimitedFiles.readdlm("../navc-data/VTWellsR/WR1DswT.TXT", skipstart=2)
+            DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR1DswT.TXT"), skipstart=2)
         elseif n==5
-            DelimitedFiles.readdlm("../navc-data/VTWellsR/WR2AswT.TXT", skipstart=2)
+            DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR2AswT.TXT"), skipstart=2)
         else
             return "Must input an integer between 1 and 5. See docs for details."
         end 

@@ -147,15 +147,18 @@ module NAVCal
 
         return (; sequence, a= Int.(x[:,1]), z = float.(x[:,4]), summer = float.(x[:,2]), winter = float.(x[:,3]), meas=Int.(x[:,5]), core, notes)
     end
+
+    function __init__()
+        printstyled("\n\n\nWelcome to NAVCal.jl!", bold=true, color=:light_yellow, blink=true)
+        print("\n\nYou probably loaded this package to correlate a varve section from\nglacial Lake Hitchcock with the North American Varve Chronology (NAVC) record.\nHere's how to do that:\n\n1. Download ")
+        printstyled("core-match.jl",  color=:magenta)
+        print(" from: ...\n\n2. In the REPL (here), execute ")
+        printstyled("import Pluto; Pluto.run()", color=:cyan)
+        print("\n     → you may need to install it first: ")
+        printstyled("]add Pluto", color=:cyan)
+        print("\n\n3. Open the ")
+        printstyled("core-match.jl", color=:magenta)
+        println(" notebook within Pluto and away you go!\n\n")
+    end
 end
 
-printstyled("\n\n\nWelcome to NAVCal.jl!", bold=true, color=:light_yellow, blink=true)
-print("\n\nYou probably loaded this package to correlate a varve section from\nglacial Lake Hitchcock with the North American Varve Chronology (NAVC) record.\nHere's how to do that:\n\n1. Download ")
-printstyled("core-match.jl",  color=:magenta)
-print(" from: ...\n\n2. In the REPL (here), execute ")
-printstyled("import Pluto; Pluto.run()", color=:cyan)
-print("\n     → you may need to install it first: ")
-printstyled("]add Pluto", color=:cyan)
-print("\n\n3. Open the ")
-printstyled("core-match.jl", color=:magenta)
-println(" notebook within Pluto and away you go!\n\n")

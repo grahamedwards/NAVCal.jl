@@ -31,6 +31,7 @@ module NAVCal
 
     key | description
     :-- | :--
+    :sequence | NAVC sequence name
     :a | NAVC varve year
     :z | varve thickness (cm)
     :notes | Associated notes
@@ -38,7 +39,7 @@ module NAVCal
     """
     function RiverRoad()
         x = DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/MASSRR/RRLevy98-AM.TXT"))
-        (a= Int.(x[:,1]), z = float.(x[:,2]), notes=string.(x[:,3],x[:,3]))
+        (sequence="RRLevy98-AM", a= Int.(x[:,1]), z = float.(x[:,2]), notes=string.(x[:,3],x[:,3]))
     end
 
     """
@@ -49,6 +50,7 @@ module NAVCal
 
     key | description
     :-- | :--
+    :sequence | NAVC sequence name
     :a | NAVC varve year
     :z | varve (couplet) thickness (cm)
     :summer | summer layer thickness (cm)
@@ -59,7 +61,7 @@ module NAVCal
     """
     function KelseyFerguson()
         x = DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/KF-ABCD09-AM.txt"))
-        (a= Int.(x[:,1]), z = float.(x[:,4]), summer = float.(x[:,2]), winter = float.(x[:,3]), transect=Int.(x[:,5]), notes=string.(x[:,6]))
+        ( sequence="KF-ABCD09", a= Int.(x[:,1]), z = float.(x[:,4]), summer = float.(x[:,2]), winter = float.(x[:,3]), transect=Int.(x[:,5]), notes=string.(x[:,6]))
     end
 
 
@@ -71,13 +73,14 @@ module NAVCal
 
     key | description
     :-- | :--
+    :sequence | NAVC sequence name
     :a | NAVC varve year
     :z | varve thickness (cm)
 
     """
     function MillBrook()
         x = DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/MILLBK-AM.txt"))
-        (a= Int.(x[:,1]), z = float.(x[:,2]))
+        (; sequence="MILLBK", a= Int.(x[:,1]), z = float.(x[:,2]))
     end
 
     """
@@ -99,6 +102,7 @@ module NAVCal
 
     key | description
     :-- | :--
+    :sequence | NAVC sequence name
     :a | NAVC varve year
     :z | varve (couplet) thickness (cm)
     :summer | summer layer thickness (cm)
@@ -111,14 +115,19 @@ module NAVCal
     function WellsRiver(n::Int=0)
 
         x = if n==1
+            sequence = "WR1AswT"
             DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR1AswT.TXT"), skipstart=2)
         elseif n==2
+            sequence = "WR1BswT"
             DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR1BswT.TXT"), skipstart=2)
         elseif n==3
+            sequence = "WR1CswT"
             DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR1CswT.TXT"), skipstart=2)
         elseif n==4
+            sequence = "WR1DswT"
             DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR1DswT.TXT"), skipstart=2)
         elseif n==5
+            sequence = "WR2AswT"
             DelimitedFiles.readdlm(joinpath(@__DIR__,"../navc-data/VTWellsR/WR2AswT.TXT"), skipstart=2)
         else
             return "Must input an integer between 1 and 5. See docs for details."
@@ -136,7 +145,7 @@ module NAVCal
             notes[i] = string([ifelse(isempty(x[i,j]), "", x[i,j]*" ") for j=7:xcols.stop]...,)
         end
 
-        return (a= Int.(x[:,1]), z = float.(x[:,4]), summer = float.(x[:,2]), winter = float.(x[:,3]), meas=Int.(x[:,5]), core, notes)
+        return (; sequence, a= Int.(x[:,1]), z = float.(x[:,4]), summer = float.(x[:,2]), winter = float.(x[:,3]), meas=Int.(x[:,5]), core, notes)
     end
 end
 

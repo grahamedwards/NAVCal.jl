@@ -8,19 +8,20 @@ module NAVCal
 
         annum(x)
 
-    Convert NAVC varve year to age in annum. 
+    Convert NAVC varve year to age in annum, relative to a 2000 CE datum (b2k)
 
     """
-    annum(x::Integer) = 20770 - x
+    annum(x::Integer) = 20820 - x
+    annum(x::Number) = annum(round(Int,x))
 
     """
 
         varve_year(x)
 
-    Convert age in annum to NAVC varve year.
+    Convert age in annum (b2k) to NAVC varve year.
     
     """
-    varve_year(x::Number) = 20770. - float(x)
+    varve_year(x::Integer) =  annum(x)
 
 
     """

@@ -2,8 +2,8 @@ using NAVCal
 using Test
 
 @testset "NAVCal.jl" begin
-    @test annum(8500) === 12270
-    @test varve_year(2500) ≈ 18270.0
+    @test annum(8500) === 12270+50 === varve_year(8500)
+    @test varve_year(2500) === 18270+50
 
     x, i = KelseyFerguson(), 8
     @test (x.a[i], x.summer[i], x.winter[i], x.z[i], x.transect[i], x.notes[i]) ==  (3304, 0.805, 0.942, 1.746, 1, "...")

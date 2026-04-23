@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.20.13
+# v0.20.21
 
 using Markdown
 using InteractiveUtils
@@ -94,7 +94,7 @@ Adjust the apparent amplitude of core data varve thicknesses to more easily comp
 "
 
 # ╔═╡ 59b373d2-439e-4dbd-b9c5-0c0c4383c74f
-@bind coreamp Slider(LinRange(0,4,41), default=1, show_value=x-> "$coreamp x" )
+@bind coreamp Slider(LinRange(0,4,81), default=1)
 
 # ╔═╡ 58da7af4-e9d2-4c66-b002-e16c8b93ea8b
 md"#### Zoom: NAVC record 
@@ -112,7 +112,7 @@ md"
 Adjust the start date (in NAVC year) of the timeseries above."
 
 # ╔═╡ 708ac696-eeda-4750-a5f0-69fedc1af32e
-@bind yrstart Slider(firstindex(navcdata.a):lastindex(navcdata.a), default=firstindex(navcdata.a), show_value=x -> navcdata.a[yrstart])
+@bind yrstart Slider(firstindex(navcdata.a):lastindex(navcdata.a), default=firstindex(navcdata.a))
 
 # ╔═╡ 08a885cb-4812-4443-afe7-88f8dbdd0086
 md"
@@ -122,6 +122,15 @@ Adjust the basal age (in NAVC year) of the core.
 
 # ╔═╡ 9bc5168f-b477-45a7-9131-c41f1820ed82
 @bind corestart Slider(first(navcdata.a):last(navcdata.a), default = 0, show_value=true)
+
+# ╔═╡ e34eb121-032b-4fca-9f64-76097d800f24
+md"""
+Parameter | Value
+:-------- | :---:
+Core data amplitude | $coreamp x
+Timeseries start | $(navcdata.a[yrstart])
+Core basal age | $corestart
+"""
 
 # ╔═╡ 458fc2d9-b072-416e-8114-03d98e368f16
 md"Core name"
@@ -195,6 +204,7 @@ I am working on a ~prettier~ workflow using a Pluto `DownloadButton`, [likely us
 # ╟─708ac696-eeda-4750-a5f0-69fedc1af32e
 # ╟─08a885cb-4812-4443-afe7-88f8dbdd0086
 # ╟─9bc5168f-b477-45a7-9131-c41f1820ed82
+# ╟─e34eb121-032b-4fca-9f64-76097d800f24
 # ╟─458fc2d9-b072-416e-8114-03d98e368f16
 # ╟─0f8f50c8-aa11-4509-a49e-8242fb8cb63d
 # ╟─dbff7a09-8636-4642-a921-a230b28f4e60
